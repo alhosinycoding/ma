@@ -1,54 +1,68 @@
-// الحسابات
 const users = {
-  "يحيى حسين": "Yehia@2026",
-  "مروان حسن": "Marwan@2026",
-  "مروان طاهر": "Taher@2026",
-  "سارة محمد": "Sara@2026"
+  "يحيى حسين":"Yehia@2026",
+  "مروان حسن":"Marwan@2026",
+  "مروان طاهر":"Taher@2026",
+  "سارة محمد":"Sara@2026"
 };
 
+function show(id){
+  document.querySelectorAll(".screen")
+    .forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+// تسجيل الدخول مع حفظ الجلسة
 function login(){
   let u = username.value.trim();
   let p = password.value;
 
   if(users[u] === p){
+    localStorage.setItem("loggedIn","true");
+    localStorage.setItem("currentUser",u);
     alert("نورت المنصة ✨");
-    document.getElementById("accountName").innerText = "الاسم: " + u;
+    accountName.innerText = "الاسم: "+u;
     show("home");
   } else {
     alert("بيانات غير صحيحة");
   }
 }
 
+// تسجيل الخروج ومسح الجلسة
 function logout(){
+  localStorage.removeItem("loggedIn");
+  localStorage.removeItem("currentUser");
   alert("باي 👋 مستنيك تنورنا تاني");
   show("login");
 }
 
-function openScreen(id){
-  show(id);
-}
+function goHome(){ show("home"); }
+function openScreen(id){ show(id); }
 
-function goHome(){
-  show("home");
-}
+// التفاعل الذكي
+function playLesson(){ alert("عاش يا بطل 💪"); }
+function openExam(){ alert("شد حيلك 💥 وربنا معاك"); }
 
-function show(id){
-  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-}
+// Dark / Light Mode
+const toggle = document.getElementById("themeToggle");
+if(localStorage.getItem("theme")==="light"){ document.body.classList.add("light"); }
+toggle.onclick = () => {
+  document.body.classList.toggle("light");
+  localStorage.setItem("theme",
+    document.body.classList.contains("light")?"light":"dark");
+};
 
-// تفاعل
-function playLesson(){
-  alert("عاش يا بطل 💪");
-}
+// حماية الموقع
+document.addEventListener("contextmenu",e=>e.preventDefault());
+document.onkeydown = e => { if(e.keyCode===123)return false; }
 
-function openExam(){
-  alert("شد حيلك 💥 وربنا معاك");
-  // ضع رابط الفورم هنا
-}
-
-// أمان
-document.addEventListener("contextmenu", e=>e.preventDefault());
-document.onkeydown = e=>{
-  if(e.keyCode==123){return false;}
+// فحص الجلسة عند تحميل الصفحة
+window.onload = () => {
+  const loggedIn = localStorage.getItem("loggedIn");
+  const user = localStorage.getItem("currentUser");
+  if(loggedIn === "true" && users[user]){
+    accountName.innerText = "الاسم: "+user;
+    show("home");
+  } else {
+    show("login");
+  }
 };
