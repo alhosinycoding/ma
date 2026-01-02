@@ -10,20 +10,17 @@ function show(id){
   document.getElementById(id).classList.add("active");
 }
 
-// تسجيل الدخول وحفظ الجلسة
 function login(){
-  let u = username.value.trim();
-  let p = password.value;
+  let u=username.value.trim(), p=password.value;
   if(users[u]===p){
     localStorage.setItem("loggedIn","true");
     localStorage.setItem("currentUser",u);
     alert("نورت المنصة ✨");
     accountName.innerText = "الاسم: "+u;
     show("home");
-  } else { alert("بيانات غير صحيحة"); }
+  } else alert("بيانات غير صحيحة");
 }
 
-// تسجيل الخروج ومسح الجلسة
 function logout(){
   localStorage.removeItem("loggedIn");
   localStorage.removeItem("currentUser");
@@ -34,29 +31,34 @@ function logout(){
 function goHome(){ show("home"); }
 function openScreen(id){ show(id); }
 
-// التفاعل الذكي
-function playLesson(){ alert("عاش يا بطل 💪"); }
-function openExam(){ alert("شد حيلك 💥 وربنا معاك"); }
+function playLesson(link){
+  document.getElementById("videoBox").innerHTML=`<iframe src="${link}" frameborder="0" allowfullscreen></iframe>`;
+  alert("عاش يا بطل 💪");
+}
+
+function openExam(link){
+  alert("شد حيلك 💥 وربنا معاك");
+  window.open(link,'_blank');
+}
 
 // Dark / Light Mode
-const toggle = document.getElementById("themeToggle");
+const toggle=document.getElementById("themeToggle");
 if(localStorage.getItem("theme")==="light"){ document.body.classList.add("light"); }
-toggle.onclick = () => {
+toggle.onclick=()=>{
   document.body.classList.toggle("light");
-  localStorage.setItem("theme",
-    document.body.classList.contains("light")?"light":"dark");
+  localStorage.setItem("theme",document.body.classList.contains("light")?"light":"dark");
 };
 
-// حماية الموقع
+// أمان
 document.addEventListener("contextmenu",e=>e.preventDefault());
-document.onkeydown = e=>{if(e.keyCode===123)return false;}
+document.onkeydown=e=>{if(e.keyCode===123)return false;}
 
-// فحص الجلسة عند التحميل
-window.onload = ()=>{
-  const loggedIn = localStorage.getItem("loggedIn");
-  const user = localStorage.getItem("currentUser");
+// جلسة محفوظة
+window.onload=()=>{
+  const loggedIn=localStorage.getItem("loggedIn");
+  const user=localStorage.getItem("currentUser");
   if(loggedIn==="true" && users[user]){
     accountName.innerText = "الاسم: "+user;
     show("home");
-  } else { show("login"); }
+  } else show("login");
 };
