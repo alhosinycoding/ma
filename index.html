@@ -8,25 +8,18 @@
 </head>
 <body>
 
-<!-- شريط علوي ثابت باسم المنصة -->
-<header id="topBar">
-  <span>الشهد في اللغة العربية</span>
-</header>
+<header id="topBar">الشهد في اللغة العربية</header>
 
-<!-- زر Dark/Light Mode -->
 <button id="themeToggle" title="تغيير الوضع">🌙</button>
 
 <!-- شاشة تسجيل الدخول -->
 <div id="login" class="screen active">
   <h1 class="logo">الشهد في اللغة العربية</h1>
-
   <input id="username" type="text" placeholder="الاسم">
   <input id="password" type="password" placeholder="كلمة المرور">
   <button onclick="login()">تسجيل الدخول</button>
 
-  <a class="whatsapp" href="https://wa.me/201007951251" target="_blank">
-    التواصل مع الأستاذ
-  </a>
+  <a class="whatsapp" href="https://wa.me/201007951251" target="_blank">التواصل مع الأستاذ</a>
 
   <footer>
     صنعت بواسطة yehia al hosiny<br>
@@ -45,19 +38,19 @@
 <!-- شاشة الحصص -->
 <div id="lessons" class="screen">
   <h2>الحصص</h2>
-  <button onclick="playLesson()">الحصة الأولى</button>
-  <button onclick="playLesson()">الحصة الثانية</button>
-  <button onclick="playLesson()">الحصة الثالثة</button>
-  <div id="videoBox"><!-- ضع رابط اليوتيوب هنا --></div>
+  <button onclick="playLesson('https://www.youtube.com/embed/dQw4w9WgXcQ')">الحصة الأولى</button>
+  <button onclick="playLesson('https://www.youtube.com/embed/3JZ_D3ELwOQ')">الحصة الثانية</button>
+  <button onclick="playLesson('https://www.youtube.com/embed/V-_O7nl0Ii0')">الحصة الثالثة</button>
+  <div id="videoBox"></div>
   <button onclick="goHome()">رجوع</button>
 </div>
 
 <!-- شاشة الاختبارات -->
 <div id="exams" class="screen">
   <h2>الاختبارات</h2>
-  <button onclick="openExam()">اختبار 1</button>
-  <button onclick="openExam()">اختبار 2</button>
-  <button onclick="openExam()">اختبار 3</button>
+  <button onclick="openExam('https://forms.gle/1')">اختبار 1</button>
+  <button onclick="openExam('https://forms.gle/2')">اختبار 2</button>
+  <button onclick="openExam('https://forms.gle/3')">اختبار 3</button>
   <button onclick="goHome()">رجوع</button>
 </div>
 
