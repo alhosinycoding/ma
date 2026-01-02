@@ -6,25 +6,21 @@ const users = {
 };
 
 function show(id){
-  document.querySelectorAll(".screen")
-    .forEach(s=>s.classList.remove("active"));
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
   document.getElementById(id).classList.add("active");
 }
 
-// تسجيل الدخول مع حفظ الجلسة
+// تسجيل الدخول وحفظ الجلسة
 function login(){
   let u = username.value.trim();
   let p = password.value;
-
-  if(users[u] === p){
+  if(users[u]===p){
     localStorage.setItem("loggedIn","true");
     localStorage.setItem("currentUser",u);
     alert("نورت المنصة ✨");
     accountName.innerText = "الاسم: "+u;
     show("home");
-  } else {
-    alert("بيانات غير صحيحة");
-  }
+  } else { alert("بيانات غير صحيحة"); }
 }
 
 // تسجيل الخروج ومسح الجلسة
@@ -53,16 +49,14 @@ toggle.onclick = () => {
 
 // حماية الموقع
 document.addEventListener("contextmenu",e=>e.preventDefault());
-document.onkeydown = e => { if(e.keyCode===123)return false; }
+document.onkeydown = e=>{if(e.keyCode===123)return false;}
 
-// فحص الجلسة عند تحميل الصفحة
-window.onload = () => {
+// فحص الجلسة عند التحميل
+window.onload = ()=>{
   const loggedIn = localStorage.getItem("loggedIn");
   const user = localStorage.getItem("currentUser");
-  if(loggedIn === "true" && users[user]){
+  if(loggedIn==="true" && users[user]){
     accountName.innerText = "الاسم: "+user;
     show("home");
-  } else {
-    show("login");
-  }
+  } else { show("login"); }
 };
