@@ -16,7 +16,7 @@ body {
   font-family:'Cairo',sans-serif;
   background:linear-gradient(270deg,var(--bg1),var(--bg2));
   background-size:400% 400%;
-  animation:bgMove 10s infinite;
+  animation:bgMove 12s infinite;
   color:var(--text);
 }
 
@@ -24,7 +24,7 @@ body.light { animation:none; }
 
 @keyframes bgMove {0%{background-position:0%}50%{background-position:100%}100%{background-position:0%}}
 
-/* الشريط العلوي */
+/* شريط علوي */
 #topBar {
   position: fixed; top:0; left:0; width:100%; height:50px;
   background: rgba(0,0,0,0.5); color:white;
@@ -34,8 +34,10 @@ body.light { animation:none; }
 }
 body.light #topBar { background:#fff; color:#111; backdrop-filter:none; }
 
+/* الشاشات */
 .screen { display:none; min-height:100vh; text-align:center; padding:80px 30px 30px 30px; }
 .active { display:block; }
+
 .logo { font-size:30px; margin-bottom:20px; }
 input {
   width:90%; max-width:350px; padding:12px;
@@ -66,10 +68,21 @@ footer { margin-top:30px; font-size:14px; opacity:.8; }
 }
 body.light #themeToggle { background:#007BFF; color:#fff; backdrop-filter:none; }
 
+/* الفيديو */
 #videoBox iframe {
-  width:90%; max-width:700px; height:400px; margin:20px auto; display:block; border-radius:10px;
+  width:90%; max-width:700px; height:400px; margin:20px auto; display:block; border-radius:10px; box-shadow:0 5px 20px rgba(0,0,0,0.3);
 }
 
+/* Toast notifications */
+#toastContainer { position:fixed; top:70px; right:20px; z-index:2000; }
+.toast {
+  background:#007BFF; color:#fff; padding:10px 20px; margin-top:10px;
+  border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.3); opacity:0.95;
+  cursor:pointer; animation:slideIn 0.5s ease;
+}
+@keyframes slideIn {0%{opacity:0; transform:translateX(100%);}100%{opacity:1; transform:translateX(0);}}
+
+/* Responsive */
 @media(max-width:600px){
   h1,h2{font-size:22px} 
   button{font-size:16px}
