@@ -2,23 +2,23 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>الشهد في اللغة العربية</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- زر الوضع -->
 <button id="themeToggle">🌙</button>
 
 <!-- شاشة تسجيل الدخول -->
 <div id="login" class="screen active">
   <h1 class="logo">الشهد في اللغة العربية</h1>
 
-  <input type="text" id="username" placeholder="الاسم">
-  <input type="password" id="password" placeholder="كلمة المرور">
+  <input id="username" type="text" placeholder="الاسم">
+  <input id="password" type="password" placeholder="كلمة المرور">
   <button onclick="login()">تسجيل الدخول</button>
 
-  <a class="whatsapp" href="https://wa.me/201277723926" target="_blank">
+  <a class="whatsapp" href="https://wa.me/201007951251" target="_blank">
     التواصل مع الأستاذ
   </a>
 
@@ -36,21 +36,17 @@
   <button onclick="openScreen('account')">تفاصيل الحساب</button>
 </div>
 
-<!-- الحصص -->
+<!-- شاشة الحصص -->
 <div id="lessons" class="screen">
   <h2>الحصص</h2>
   <button onclick="playLesson()">الحصة الأولى</button>
   <button onclick="playLesson()">الحصة الثانية</button>
   <button onclick="playLesson()">الحصة الثالثة</button>
-
-  <div id="videoBox">
-    <!-- ضع رابط اليوتيوب هنا -->
-  </div>
-
+  <div id="videoBox"><!-- ضع رابط اليوتيوب هنا --></div>
   <button onclick="goHome()">رجوع</button>
 </div>
 
-<!-- الاختبارات -->
+<!-- شاشة الاختبارات -->
 <div id="exams" class="screen">
   <h2>الاختبارات</h2>
   <button onclick="openExam()">اختبار 1</button>
@@ -70,13 +66,13 @@
   <button onclick="goHome()">رجوع</button>
 </div>
 
-<!-- الحساب -->
+<!-- شاشة الحساب -->
 <div id="account" class="screen">
   <h2>معلومات الحساب</h2>
   <p id="accountName"></p>
   <p>الصف: الثالث الثانوي</p>
   <p>المجموعة: الجمعة الساعة 3</p>
-
+  <button onclick="goHome()">رجوع</button>
   <button onclick="logout()">تسجيل الخروج</button>
 </div>
 
